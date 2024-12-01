@@ -1,0 +1,664 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    display: flex;
+    background-color: #f5f5f5;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.sidebar {
+    width: 280px;
+    height: 100vh;
+    background: linear-gradient(135deg, #fff, #fff8f8);
+    padding: 2rem;
+    position: fixed;
+    box-shadow: 0 0 30px rgba(255, 75, 110, 0.1);
+    z-index: 1000;
+    transition: transform 0.3s ease;
+}
+
+.toggle-sidebar {
+    display: none;
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1001;
+    background: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.toggle-sidebar i {
+    color: #ff4b6e;
+    font-size: 1.5rem;
+    animation: heartbeat 1.5s infinite;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background: linear-gradient(135deg, rgba(255, 75, 110, 0.1), rgba(255, 128, 128, 0.1));
+    border-radius: 1rem;
+    transition: all 0.3s ease;
+}
+
+.logo:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, rgba(255, 75, 110, 0.2), rgba(255, 128, 128, 0.2));
+}
+
+.logo i {
+    color: #ff4b6e;
+    font-size: 1.8rem;
+    margin-right: 0.8rem;
+    animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    25% { transform: scale(1.1); }
+    50% { transform: scale(1); }
+    75% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.logo h2 {
+    color: #ff4b6e;
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(255, 75, 110, 0.1);
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+nav a {
+    display: flex;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    color: #666;
+    text-decoration: none;
+    border-radius: 1rem;
+    transition: all 0.3s ease;
+    background: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+nav a i {
+    margin-right: 1rem;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+nav a:hover {
+    background: linear-gradient(135deg, #ff4b6e, #ff8080);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 75, 110, 0.2);
+}
+
+nav a.active {
+    background: linear-gradient(135deg, #ff4b6e, #ff8080);
+    color: white;
+    box-shadow: 0 4px 12px rgba(255, 75, 110, 0.2);
+}
+
+main {
+    margin-left: 280px;
+    padding: 2rem;
+    width: calc(100% - 280px);
+    transition: margin-left 0.3s ease, width 0.3s ease;
+}
+
+section {
+    display: none;
+    animation: fadeIn 0.5s ease-out;
+}
+
+section.active-section {
+    display: block;
+}
+
+/* Inicio Section */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+}
+
+.card {
+    background: white;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(255, 75, 110, 0.2);
+}
+
+.card-header {
+    background: linear-gradient(135deg, #ff4b6e, #ff8080);
+    padding: 2rem;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-header::before {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: rotate(45deg);
+    top: -100%;
+    left: -100%;
+    transition: all 0.6s ease;
+}
+
+.card:hover .card-header::before {
+    transform: rotate(45deg) translate(50%, 50%);
+}
+
+.card-content {
+    padding: 2rem;
+    transform: translateY(0);
+    transition: all 0.3s ease;
+}
+
+.card:hover .card-content {
+    transform: translateY(-5px);
+}
+
+/* Recuerdos Section */
+.carousel {
+    position: relative;
+    height: 70vh;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    cursor: grab;
+}
+
+.carousel:active {
+    cursor: grabbing;
+}
+
+.carousel-container {
+    display: flex;
+    height: 100%;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.carousel-slide {
+    min-width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.carousel-slide:hover img {
+    transform: scale(1.05);
+}
+
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+.carousel-button:hover {
+    background: white;
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-button.prev { left: 20px; }
+.carousel-button.next { right: 20px; }
+
+.carousel-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot:hover {
+    background: white;
+    transform: scale(1.2);
+}
+
+.dot.active {
+    background: white;
+    transform: scale(1.2);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Poemas Section */
+.poems-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+}
+
+.poem-card {
+    background: white;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.poem-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 75, 110, 0.1), rgba(255, 128, 128, 0.1));
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.poem-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(255, 75, 110, 0.2);
+}
+
+.poem-card:hover::before {
+    opacity: 1;
+}
+
+.poem-header {
+    background: linear-gradient(135deg, #ff4b6e, #ff8080);
+    padding: 2rem;
+    color: white;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.poem-header i {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    animation: pulse 2s infinite;
+    position: relative;
+    z-index: 1;
+}
+
+.poem-header::after {
+    content: '';
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+    top: -25%;
+    left: -25%;
+    opacity: 0;
+    transition: all 0.6s ease;
+}
+
+.poem-card:hover .poem-header::after {
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+.poem-header h3 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.poem-header .author {
+    opacity: 0.8;
+    font-style: italic;
+    position: relative;
+    z-index: 1;
+}
+
+.poem-content {
+    padding: 2rem;
+    text-align: center;
+    line-height: 1.8;
+    color: #666;
+    transform: translateY(0);
+    transition: all 0.3s ease;
+}
+
+.poem-card:hover .poem-content {
+    transform: translateY(-5px);
+}
+
+/* Diario Section */
+.diary-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.diary-form {
+    background: white;
+    border-radius: 1.5rem;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    transform: translateY(0);
+    transition: all 0.3s ease;
+}
+
+.diary-form:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(255, 75, 110, 0.2);
+}
+
+textarea {
+    width: 100%;
+    min-height: 200px;
+    padding: 1rem;
+    border: 2px solid #eee;
+    border-radius: 1rem;
+    resize: vertical;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #ff4b6e;
+    box-shadow: 0 0 15px rgba(255, 75, 110, 0.1);
+}
+
+.diary-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mood-selector {
+    display: flex;
+    gap: 1rem;
+}
+
+.mood-btn {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background: #f5f5f5;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.mood-btn::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 75, 110, 0.2) 0%, transparent 70%);
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.mood-btn:hover::before {
+    opacity: 1;
+}
+
+.mood-btn:hover {
+    background: #ff4b6e;
+    color: white;
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(255, 75, 110, 0.3);
+}
+
+.mood-btn.active {
+    background: #ff4b6e;
+    color: white;
+    animation: pulse 2s infinite;
+}
+
+.save-entry {
+    padding: 0.8rem 2rem;
+    background: linear-gradient(135deg, #ff4b6e, #ff8080);
+    color: white;
+    border: none;
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.save-entry::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    top: 0;
+    left: -100%;
+    transition: all 0.6s ease;
+}
+
+.save-entry:hover::before {
+    left: 100%;
+}
+
+.save-entry:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 75, 110, 0.2);
+}
+
+.diary-entries {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.diary-entry {
+    background: white;
+    border-radius: 1.5rem;
+    padding: 2rem;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    animation: slideUp 0.5s ease-out;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.diary-entry:hover {
+    transform: translateY(-5px) scale(1.01);
+    box-shadow: 0 15px 40px rgba(255, 75, 110, 0.2);
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #f5f5f5;
+}
+
+.entry-author {
+    font-weight: bold;
+    color: #ff4b6e;
+}
+
+.entry-date {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.entry-content {
+    line-height: 1.6;
+    color: #444;
+}
+
+/* Success Message Animation */
+.success-message {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    animation: slideIn 0.5s ease-out, fadeOut 0.5s ease-out 2.5s forwards;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .poems-container {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .toggle-sidebar {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .sidebar {
+        transform: translateX(-100%);
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+    }
+
+    main {
+        margin-left: 0;
+        width: 100%;
+        padding-top: 5rem;
+    }
+
+    .carousel {
+        height: 50vh;
+    }
+
+    body.sidebar-active main {
+        margin-left: 280px;
+        width: calc(100% - 280px);
+    }
+}
+
+@media (max-width: 480px) {
+    .diary-form {
+        padding: 1rem;
+    }
+
+    .mood-selector {
+        gap: 0.5rem;
+    }
+
+    .mood-btn {
+        width: 35px;
+        height: 35px;
+    }
+
+    .save-entry {
+        padding: 0.6rem 1.5rem;
+    }
+
+    .card-header {
+        padding: 1.5rem;
+    }
+
+    .card-content {
+        padding: 1.5rem;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+@keyframes slideIn {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+}

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oscar & Yuritzi - Nuestro Amor</title>
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">
+            <i class="fas fa-heart"></i>
+            <h2>Nuestro Amor</h2>
+        </div>
+        <nav>
+            <a href="#inicio" class="active">
+                <i class="fas fa-home"></i>
+                <span>Inicio</span>
+            </a>
+            <a href="#recuerdos">
+                <i class="fas fa-camera"></i>
+                <span>Recuerdos</span>
+            </a>
+            <a href="#poemas">
+                <i class="fas fa-book"></i>
+                <span>Poemas</span>
+            </a>
+            <a href="#diario">
+                <i class="fas fa-journal-whills"></i>
+                <span>Diario</span>
+            </a>
+        </nav>
+    </div>
+
+    <main>
+        <section id="inicio" class="active-section">
+            <div class="grid-container">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Momentos</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Cada instante juntos es un tesoro que guardamos en nuestro corazón. Los pequeños detalles, las risas compartidas y los abrazos sinceros construyen nuestra historia de amor.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Amor</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Nuestro amor crece cada día más fuerte y más hermoso. Como un jardín bien cuidado, florece con cada gesto de cariño y cada palabra de amor que compartimos.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Futuro</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Juntos construimos un futuro lleno de sueños y esperanzas. Cada paso que damos es una promesa de amor eterno, un camino que recorremos de la mano.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="recuerdos" class="section">
+            <div class="carousel">
+                <div class="carousel-container"></div>
+                <button class="carousel-button prev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-button next">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                <div class="carousel-dots"></div>
+            </div>
+        </section>
+
+        <section id="poemas" class="section">
+            <div class="poems-container">
+                <div class="poem-card">
+                    <div class="poem-header">
+                        <i class="fas fa-heart"></i>
+                        <h3>Amor Eterno</h3>
+                        <span class="author">Oscar</span>
+                    </div>
+                    <div class="poem-content">
+                        <p>En cada latido de mi corazón,<br>
+                           Tu nombre resuena con pasión.<br>
+                           Eres mi luz, mi inspiración,<br>
+                           Mi más hermosa bendición.</p>
+                    </div>
+                </div>
+                <div class="poem-card">
+                    <div class="poem-header">
+                        <i class="fas fa-heart"></i>
+                        <h3>Nuestro Amor</h3>
+                        <span class="author">Yuritzi</span>
+                    </div>
+                    <div class="poem-content">
+                        <p>Como las estrellas en el cielo,<br>
+                           Nuestro amor brilla sin fin.<br>
+                           Juntos escribimos esta historia,<br>
+                           De un amor puro y sin fin.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="diario" class="section">
+            <div class="diary-container">
+                <div class="diary-form">
+                    <textarea placeholder="Escribe tu entrada del diario aquí..."></textarea>
+                    <div class="diary-actions">
+                        <div class="mood-selector">
+                            <button class="mood-btn active" data-mood="feliz">
+                                <i class="fas fa-smile"></i>
+                            </button>
+                            <button class="mood-btn" data-mood="amor">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                            <button class="mood-btn" data-mood="pensativo">
+                                <i class="fas fa-think"></i>
+                            </button>
+                        </div>
+                        <button class="save-entry">Guardar</button>
+                    </div>
+                </div>
+                <div class="diary-entries"></div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/home.js"></script>
+</body>
+</html>
